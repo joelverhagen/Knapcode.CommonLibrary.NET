@@ -99,7 +99,7 @@ namespace ComLib.Types
         /// <param name="charsPerWord">40 chars in each word.</param>
         /// <param name="spacer">" "</param>
         /// <returns>Splitted word.</returns>
-        internal static string SplitWord(string text, int charsPerWord, string spacer)
+        public static string SplitWord(string text, int charsPerWord, string spacer)
         {
             // Validate.
             if (string.IsNullOrEmpty(text)) { return text; }
