@@ -116,10 +116,10 @@ namespace CommonLibrary.Tests
 
 
         [Test]
-        public void CanParseCsv_WithNewLines()
+        public void CanParseCsv_WithNewLines_CRLF()
         {
-            string expected = "Testing" + Environment.NewLine + "new line";
-            string text = ContentLoader.GetTextFileContent("Csv.Csv_MultiLine.csv");
+            string expected = "Testing\r\nnew line";
+            string text = ContentLoader.GetTextFileContent("Csv.Csv_MultiLineCRLF.csv");
             text = CultureInfoHelper.FixDates(text);
             CsvDoc csv = Csv.LoadText(text, true);
 
@@ -127,6 +127,40 @@ namespace CommonLibrary.Tests
             CsvCheck.AssertColumnDataInt(csv, "Id", 0, 1, 1);
             CsvCheck.AssertColumnData(csv, "NonAlphaNumeric", 0, @"(`~!@#$%^&*()_+-=[]\{}|<>?./;:)");
             CsvCheck.AssertColumnData(csv, "Description", 0, expected);
+            CsvCheck.AssertColumnDataDate(csv, "Date", 0, DateTime.Parse(CultureInfoHelper.FixDates("4/10/2009")), 1);
+        }
+
+
+        [Test]
+        public void CanParseCsv_WithNewLines_LF()
+        {
+            string expected = "Testing\nnew line";
+            string text = ContentLoader.GetTextFileContent("Csv.Csv_MultiLineLF.csv");
+            text = CultureInfoHelper.FixDates(text);
+            CsvDoc csv = Csv.LoadText(text, true);
+
+            // Check the csv data.
+            CsvCheck.AssertColumnDataInt(csv, "Id", 0, 1, 1);
+            CsvCheck.AssertColumnData(csv, "NonAlphaNumeric", 0, @"(`~!@#$%^&*()_+-=[]\{}|<>?./;:)");
+            CsvCheck.AssertColumnData(csv, "Description", 0, expected);
+            CsvCheck.AssertColumnDataDate(csv, "Date", 0, DateTime.Parse(CultureInfoHelper.FixDates("4/10/2009")), 1);
+        }
+
+
+        [Test]
+        public void CanParseCsv_WithNewLines_Mixed()
+        {
+            string text = ContentLoader.GetTextFileContent("Csv.Csv_MultiLineMixed.csv");
+            text = CultureInfoHelper.FixDates(text);
+            CsvDoc csv = Csv.LoadText(text, true);
+
+            // Check the csv data.
+            CsvCheck.AssertColumnDataInt(csv, "Id", 0, 1, 1);
+            CsvCheck.AssertColumnData(csv, "NonAlphaNumeric", 0, @"(`~!@#$%^&*()_+-=[]\{}|<>?./;:)");
+            Assert.AreEqual(3, csv.Data.Count);
+            Assert.AreEqual("Testing\nnew line", csv.Data[0]["Description"]);
+            Assert.AreEqual("Testing\r\nnew line", csv.Data[1]["Description"]);
+            Assert.AreEqual("Testing\nnew line", csv.Data[2]["Description"]);
             CsvCheck.AssertColumnDataDate(csv, "Date", 0, DateTime.Parse(CultureInfoHelper.FixDates("4/10/2009")), 1);
         }
 

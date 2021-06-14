@@ -463,7 +463,11 @@ namespace ComLib
                 }
                 else
                     ReadChar();
-            }                
+            }
+            else if (_state.CurrentChar == '\n')
+            {
+                ReadChar();
+            }
         }
 
 
@@ -594,8 +598,8 @@ namespace ComLib
         /// <returns>True if the current character is an eol.</returns>
         public bool IsEol()
         {
-            // Check for "\r\n"
-            if (_state.CurrentChar == '\r' && PeekChar() == '\n')
+            // Check for "\n" or "\r\n"
+            if (_state.CurrentChar == '\n' || (_state.CurrentChar == '\r' && PeekChar() == '\n'))
                 return true;
 
             return false;

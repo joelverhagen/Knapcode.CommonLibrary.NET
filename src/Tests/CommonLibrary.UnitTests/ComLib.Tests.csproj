@@ -171,7 +171,13 @@
     <EmbeddedResource Include="Content\Csv\Csv_Spaces.csv" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Content\Csv\Csv_MultiLine.csv" />
+    <EmbeddedResource Include="Content\Csv\Csv_MultiLineCRLF.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Csv\Csv_MultiLineLF.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\Csv\Csv_MultiLineMixed.csv" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Content\Csv\Csv_Delimeter.csv" />
