@@ -38,7 +38,7 @@
     <PackageId>Knapcode.CommonLibrary.NET</PackageId>
     <PackageVersion>0.9.8.8-beta.2</PackageVersion>
     <Authors>Kishore Reddy, Joel Verhagen</Authors>
-    <Description>Unofficial NuGet package for CommonLibrary.NET from CodePlex. Produced for https://github.com/joelverhagen/NCsvPerf. Original author is Kishmore Reddy. Modified slight and packaged by Joel Verhagen.</Description>
+    <Description>Unofficial NuGet package for the CommonLibrary.NET project on CodePlex. Produced for performance testing in https://github.com/joelverhagen/NCsvPerf. Original author is Kishmore Reddy. Modified slightly and packaged by Joel Verhagen.</Description>
     <ProjectUrl>https://archive.codeplex.com/?p=commonlibrarynet</ProjectUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
